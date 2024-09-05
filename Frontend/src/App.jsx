@@ -1,15 +1,10 @@
-
-import './App.css'
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
-import 'bootstrap/dist/css/bootstrap.min.css'
-import 'bootstrap/dist/js/bootstrap.bundle.min.js'
-
 import TrackerHome from './pages/TrackerHome.jsx'
 import Login from './pages/Login.jsx'
 import Register from './pages/Register.jsx'
 
-export default function App() {
- 
+function App() {
+
 
   return (
     <>
@@ -24,4 +19,4 @@ export default function App() {
   )
 }
 
-
+export default App

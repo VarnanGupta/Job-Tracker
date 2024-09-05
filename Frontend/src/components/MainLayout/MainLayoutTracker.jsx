@@ -1,14 +1,11 @@
+import React from 'react'
 
-export default function MainLayoutTracker() {
+const MainLayoutTracker = () => {
   return (
-    <>
-    <nav className="navbar">
-        <div className="container-fluid p-2">
-            <input type="text" placeholder="Search" id="" className="mx-3 mt-3 searchinput" size={50} />
-            <button className="btn btn-dark text-white mx-4 mt-3 ">Logout</button>
-        </div>
-
-    </nav>
-    </>
+    <div>
+        <h1>Navbar on Tracker Listing</h1>
+    </div>
   )
 }
+
+export default MainLayoutTracker
