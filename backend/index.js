@@ -8,7 +8,7 @@ import cookieParser from 'cookie-parser'
 dotenv.config()
 
 //mongodb connection here 
-DbCon()
+//DbCon()
 
 
 const app = express()
