@@ -20,8 +20,18 @@ const JobsSchema = mongoose.Schema({
         enum: ["resumeScreening", "TechInterview1","TechInterview2","TechInterview3","HRinterview"],
         default : "incomplete",
     },
+    // createdBy:{
+    //     type:mongoose.Schema.Types.ObjectId,
+    //     required : true
+    // },
+    // createdAt:{
+    //     type : Date,
+    //     default : Date.now,
+    // },
 },{
     timestamp:true
 })
 
 const JobsModel = mongoose.model("Jobs", JobsSchema)
+
+export default JobsModel
