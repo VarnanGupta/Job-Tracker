@@ -1,12 +1,14 @@
+import React from "react";
 import { Outlet } from "react-router-dom";
-import Header from "./components/Header/Header.jsx";
-
-
-export default function Layout() {
+import Navbar from "./Components/Navbar/Navbar";
+import Footer from "./Components/Footer/Footer";
+function Layout() {
   return (
-    <>
-        <Header />
-        <Outlet />
-    </>
-  )
+    <div className="flex flex-col md:flex-row h-screen">
+      <Navbar />
+      <Outlet />
+    </div>
+  );
 }
+
+export default Layout;

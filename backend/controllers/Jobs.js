@@ -20,11 +20,11 @@ const Create = async(req, res)=>{
 const UpdateJob= async(req,res)=>{
     try {
         const { id } = req.params
-        let job = await JobsModel.findById(id) // task has the id of the job which we want to update
-        if(!job){
+        let Job = await JobsModel.findById(id) // task has the id of the job which we want to update
+        if(!Job){
             return res.status(404).json({success:false, message:"Job not found"})
         }
-        job = await JobsModel .findByIdAndUpdate(id , req.body,{ // (from , to)
+        Job = await JobsModel .findByIdAndUpdate(id , req.body,{ // (from , to)
            new: true, // this is a mongoose option to return the updated document
            runValidators: true, // this is a mongoose option to run the validators on the updated document
            useFindAndModify : false,
@@ -55,7 +55,7 @@ const UpdateJob= async(req,res)=>{
         //     {new: true,} // this is a mongoose option to return the updated document
         // )
 
-        res.status(200).json({success:true, message:"Job Updated successfully", job})
+        res.status(200).json({success:true, message:"Job Updated successfully", Job})
     } catch (error) {
         console.log(error)
         return res.status(500).json({success:false, message:"Internal server error"})
@@ -66,12 +66,12 @@ const DeleteJob = async(req,res)=>{
     try {
         
         const { id } = req.params
-        const job = await JobsModel.findById(id) // task has the id of the job which we want to delete
-        if(!job){
+        const Job = await JobsModel.findById(id) // task has the id of the job which we want to delete
+        if(!Job){
             return res.status(404).json({success:false, message:"Job not found"})
         }
 
-        const deleteJob = await JobsModel.findByIdAndDelete(job) // function to delete the job .. Since task has the id of the job we want to delete.
+        const deleteJob = await JobsModel.findByIdAndDelete(Job) // function to delete the job .. Since task has the id of the job we want to delete.
 
         res.status(200).json({success: true,message : "Job Deleted s    uccessfully!",deleteJob})
 
@@ -85,12 +85,12 @@ const DeleteJob = async(req,res)=>{
 const GetJob = async(req,res)=>{
     try {
         const {id} = req.params
-        const job = await JobsModel.find({ id})
+        const Job = await JobsModel.find({ id})
 
-        if(!job){
+        if(!Job){
             return res.status(404).json({success:false, message:"Not data found"})
         }
-        res.status(200).json({success:true, job})
+        res.status(200).json({success:true, Job})
 
     } catch (error) {
         console.log(error)

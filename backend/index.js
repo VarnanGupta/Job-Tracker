@@ -4,15 +4,21 @@ import AuthRoutes from './routes/Auth.js'
 import DbCon from './utils/db.js'
 import JobsRoutes from './routes/Jobs.js'
 import cookieParser from 'cookie-parser' 
+import cors from 'cors'
 
 dotenv.config()
 
 //mongodb connection here 
-//DbCon()
+DbCon()
 
 
 const app = express()
 const PORT = process.env.PORT
+
+app.use(cors({
+    credentials:true,
+    origin: 'http://localhost:5173'
+}))
 
 app.use(express.json())
 app.use(cookieParser())
