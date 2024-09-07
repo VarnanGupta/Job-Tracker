@@ -109,8 +109,8 @@ function JobModal() {
               id="worktype"
             >
               <option value="">Select work type</option>
-              <option value="part-time">Part Time</option>
-              <option value="full-time">Full Time</option>
+              <option value="partTime">Part Time</option>
+              <option value="fullTime">Full Time</option>
               <option value="freelancer">Freelancer</option>
               <option value="internship">Internship</option>
               <option value="contract">Contract</option>
@@ -141,8 +141,9 @@ function JobModal() {
             <option value="TechInterview2">Technical Interview-II</option>
             <option value="TechInterview3">Technical Interview-III</option>
             <option value="TechInterview4">Technical Interview-IV</option>
-            <option value="hrInterview">HR Interview</option>
+            <option value="HRinterview">HR Interview</option>
             <option value="rejected">Rejected</option>
+            <option value="selected">Selected</option>
           </select>
         </div>
       </Modal>

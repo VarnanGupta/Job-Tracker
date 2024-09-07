@@ -3,10 +3,10 @@ import JobsModel from "../models/Jobs.js"
 const Create = async(req, res)=>{
     try {
         const userId = req.userId  
-        const {companyName, role, worktype, location, status, appliedOn} = req.body 
+        const {companyName, role, workType, location, status, appliedOn} = req.body 
 
         const NewJob = new JobsModel({
-        companyName, role, worktype, location, status, appliedOn,})
+        companyName, role, workType, location, status, appliedOn,})
         
         await NewJob.save()
         res.status(200).json({success:true, message:"Job Created successfully", Job: NewJob})
