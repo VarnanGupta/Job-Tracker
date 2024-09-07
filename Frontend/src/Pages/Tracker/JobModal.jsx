@@ -45,6 +45,7 @@ function JobModal() {
             id="companyName"
             type="text"
             placeholder="Enter company name"
+            required
           />
         </div>
 
@@ -66,12 +67,13 @@ function JobModal() {
             id="role"
             type="text"
             placeholder="Enter role"
+            required
           />
         </div>
 
         <div className="mb-4 flex items-center">
           <label
-            className="text-gray-700 text-sm font-bold mr-2"
+            className="text-gray-700 text-sm font-bold mr-2 "
             htmlFor="location"
           >
             Location
@@ -87,6 +89,7 @@ function JobModal() {
             id="location"
             type="text"
             placeholder="Enter location"
+            
           />
         </div>
 
@@ -106,7 +109,7 @@ function JobModal() {
           <div className="relative">
             <select
               className="bg-white focus:outline-none focus:shadow-outline border border-gray-400 rounded-lg py-2 px-4 block w-full appearance-none leading-normal"
-              id="worktype"
+              id="worktype"         
             >
               <option value="">Select work type</option>
               <option value="partTime">Part Time</option>
