@@ -44,6 +44,11 @@ import {get} from '../../services/ApiEndPoint.js'
 
 
 function Table() {
+  //Adding data from +Add Job button
+
+  // const[task,setTask]= 
+
+  //Normal fetching data in table
   const [show, setShow] = useState(false);
 
   const [jobs,setJob]= useState([])
@@ -68,7 +73,11 @@ function Table() {
   },[])
 
   const formatDate= (dateString)=>{
-    return new Date(dateString).toLocaleDateString('en-US')
+    return new Date(dateString).toLocaleDateString('en-GB',{
+      day: '2-digit',
+      month: '2-digit',
+      year: 'numeric'
+    })
   }
   const handleShow = () => {
     setShow(!show);
@@ -77,27 +86,27 @@ function Table() {
   return (
     <div className="p-4 overflow-auto">
       {jobs.length ? (
-        <table className=" border-2 rounded-xl w-full text-sm">
-          <thead className="bg-gray-300">
+        <table className=" border-2 border-zinc-300 rounded-xl w-full text-sm">
+          <thead className="bg-teal-300 text-xl font-medium">
             <tr>
               <td className="py-1 px-2 border ">Company Name</td>
               <td className="py-1 px-2 border ">Role</td>
-              <td className="py-1 px-2 border ">Work type</td>
-              <td className="py-1 px-2 border ">Location</td>
-              <td className="py-1 px-2 border ">Applied on</td>
+              <td className="py-1 px-2 border ">Work-Type</td>
+              <td className="py-1 px-2 border ">Location</td>               
+              <td className="py-1 px-2 border ">Applied-On</td>
               <td className="py-1 px-2 border ">Status</td>
               <td className="py-1 px-2 border ">Actions</td>
             </tr>
           </thead>
-          <tbody>
+          <tbody className="text-lg">
             {jobs.map((data, index) => (
-              <tr key={index}>
+              <tr key={index} >
                 <td className="py- px-2 border ">{data.companyName}</td>
                 <td className="py- px-2 border ">{data.role}</td>
                 <td className="py- px-2 border ">{data.workType}</td>
                 <td className="py- px-2 border ">{data.location}</td>
                 <td className="py- px-2 border ">{formatDate(data.createdAt)}</td>
-                <td className="py- px-2 border">
+                <td className="py- px-2 border ">
                   <span className="bg-green-200 p-1 rounded-xl text-green-800 border-green-800 border text-xs">
                     {data.status}
                   </span>
