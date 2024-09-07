@@ -9,27 +9,20 @@ const JobsSchema = mongoose.Schema({
     },
     workType :{
         type : String,
-        enum: ["partTime", "fullTime","internship ","contract"],
-        //default : "incomplete",
+        enum: ["partTime", "fullTime","freelancer","internship","contract"],
+        default : "incomplete",
     },
     location : {
         type : String,
     },
     status : {
         type : String,
-        enum: ["resumeScreening", "TechInterview1","TechInterview2","TechInterview3","HRinterview"],
+        enum: ["resumeScreening", "TechInterview1","TechInterview2","TechInterview3","TechInterview4","HRinterview","rejected","selected"],
         default : "incomplete",
     },
-    // createdBy:{
-    //     type:mongoose.Schema.Types.ObjectId,
-    //     required : true
-    // },
-    // createdAt:{
-    //     type : Date,
-    //     default : Date.now,
-    // },
+    
 },{
-    timestamp:true
+    timestamps:true
 })
 
 const JobsModel = mongoose.model("Jobs", JobsSchema)
