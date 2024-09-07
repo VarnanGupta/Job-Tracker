@@ -5,39 +5,40 @@ import { post } from "../../services/ApiEndPoint.js";
 
 function JobModal() {
   const [addSection, setAddSection] = useState(false);
-  const [formData , setFormData]= useState({
-    companyName:"",
-    role:"",
-    location:"",
-    workType:"",
-    status:"",
-  })
+  const [formData, setFormData] = useState({
+    companyName: "",
+    role: "",
+    location: "",
+    workType: "",
+    status: "",
+  });
 
-  const handleOnChange=(e)=>{
-    const {value,id} =e.target
-    setFormData((prev)=>{
+  const handleOnChange = (e) => {
+    const { value, id } = e.target;
+    setFormData((prev) => {
       return {
-      ...prev,
-      [id]:value,
-    }})
-  }
+        ...prev,
+        [id]: value,
+      };
+    });
+  };
 
   const showModal = () => {
     setAddSection(true);
   };
 
-  const handleOk =async(e) => {
-    e.preventDefault
+  const handleOk = async (e) => {
+    e.preventDefault;
     try {
-      const request = await post('/jobs/createjob',formData)
-      const response = request.data
-      console.log(response)
-      if(response.success){
-        setAddSection(false)
+      const request = await post("/jobs/createjob", formData);
+      const response = request.data;
+      console.log(response);
+      if (response.success) {
+        setAddSection(false);
         // alert(response.success)
       }
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
     // setAddSection(false);
   };
@@ -55,9 +56,10 @@ function JobModal() {
         + Add Job
       </Button>
 
-      
-        <Modal
-        title={<span className="text-3xl font-normal">New Job Applied In :</span>}
+      <Modal
+        title={
+          <span className="text-3xl font-normal">New Job Applied In :</span>
+        }
         open={addSection}
         onOk={handleOk}
         onCancel={handleCancel}
@@ -130,7 +132,6 @@ function JobModal() {
             type="text"
             placeholder="Enter location"
             onChange={handleOnChange}
-            
           />
         </div>
 
@@ -151,8 +152,8 @@ function JobModal() {
           <div className="relative">
             <select
               className="bg-white focus:outline-none focus:shadow-outline border border-gray-400 rounded-lg py-2 px-4 block w-full appearance-none leading-normal"
-              id="workType" 
-              onChange={handleOnChange}        
+              id="workType"
+              onChange={handleOnChange}
             >
               <option value="">Select work type</option>
               <option value="partTime">Part Time</option>
