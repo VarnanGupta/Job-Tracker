@@ -73,7 +73,7 @@ const DeleteJob = async(req,res)=>{
 
         const deleteJob = await JobsModel.findByIdAndDelete(Job) // function to delete the job .. Since task has the id of the job we want to delete.
 
-        res.status(200).json({success: true,message : "Job Deleted s    uccessfully!",deleteJob})
+        res.status(200).json({success: true,message : "Job Deleted successfully!",deleteJob})
 
     } catch (error) {
         console.log(error)

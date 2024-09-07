@@ -8,8 +8,9 @@ import Tracker from "./Pages/Tracker/Tracker.jsx";
 import Layout from "./Layout.jsx";
 import Login from "./Pages/Login/Login.jsx";
 // import Signup from "./Pages/Register/Register.jsx";
-import {Toaster} from 'react-hot-toast'
+// import {Toaster} from 'react-hot-toast'
 import Register from "./Pages/Register/Register.jsx";
+// import JobUpdateModal from "./Pages/Tracker/JobUpdateModal.jsx";
 
 const router = createBrowserRouter([
   {
@@ -23,6 +24,15 @@ const router = createBrowserRouter([
       {
         path: "/tracker",
         element: <Tracker />,
+        // children:[
+        //   {
+        //     path: "/editjob/:id",
+        //     element:<JobUpdateModal/>
+        //   },
+        //   {
+        //     path: "/deletejob/:id"
+        //   },
+        // ]
       },
       {
         path: "/login",
