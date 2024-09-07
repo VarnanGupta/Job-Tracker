@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { MdEdit } from "react-icons/md";
 import { MdDelete } from "react-icons/md";
 import { BsThreeDots } from "react-icons/bs";
-import {get} from '../../services/ApiEndPoint.js'
+import {get ,dele} from '../../services/ApiEndPoint.js'
 
 // const jobs = [
 //   {
@@ -55,22 +55,40 @@ function Table() {
   if(jobs){
     console.log(jobs)
   }
-  useEffect(()=>{
-    const getjobs = async()=>{
-      try {
-        const request = await get('/jobs/getjob')
-        console.log(request)
-        const response = request.data
-        setJob(response.Job)
-        // console.log(response.Job)
 
-      } catch (error) {
-        console.log(error)
-      }
+  const getjobs = async()=>{
+    try {
+      const request = await get('/jobs/getjob')
+      console.log(request)
+      const response = request.data
+      setJob(response.Job)
+      // console.log(response.Job)
+    } catch (error) {
+      console.log(error)
     }
+  }
+  useEffect(()=>{
+    
     getjobs()
 
   },[])
+
+
+  const handleDelete=async(id)=>{
+    
+    try {
+      const request = await dele('/jobs/deletejob/'+id)
+      console.log(request.data)
+      const response = request.data
+      if(response.message){
+        getjobs()
+        alert(request.data.message)
+      }
+    } catch (error) {
+      console.log(error)
+    }
+    
+  }
 
   const formatDate= (dateString)=>{
     return new Date(dateString).toLocaleDateString('en-GB',{
@@ -114,19 +132,24 @@ function Table() {
 
                 {/* *********************ACTIONS**************** */}
                 <td className="py-1 px-2 border flex ">
-                  <BsThreeDots onClick={handleShow} size={20} cursor={'pointer'}/>
-                  {show && (
+                  {/* <BsThreeDots onClick={handleShow} size={20} cursor={'pointer'}/>
+                  {show && ( */}
                     <div className="flex ">
-                      <MdEdit size={20} className="text-black" cursor={'pointer'} />
-                      <MdDelete size={20} className="text-red-500" cursor={'pointer'} />
+                      <MdEdit size={20} className="text-black" cursor={'pointer'} onClick={handleShow}  />
+                      <MdDelete size={20} className="text-red-500" cursor={'pointer'} onClick={()=>handleDelete(data._id)} />
                     </div>
-                  )}
+                  {/* )} */}
                 </td>
               </tr>
             ))}
           </tbody>
         </table>
-      ) : null}
+      ) : (
+        <>
+        <h1 className="font-semibold text-5xl flex justify-center mt-[250px] text-slate-400">From Applications to Offers : </h1>
+        <h2 className="font-semibold text-5xl flex justify-center mt-[30px] text-slate-700">Track Your Journey to Your Dream Job!</h2>
+        </>
+      )}
     </div>
   );
 }

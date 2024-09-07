@@ -1,17 +1,50 @@
 import { useState } from "react";
 import { Button, Modal } from "antd";
 
+import { post } from "../../services/ApiEndPoint.js";
+
 function JobModal() {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [addSection, setAddSection] = useState(false);
+  const [formData , setFormData]= useState({
+    companyName:"",
+    role:"",
+    location:"",
+    workType:"",
+    status:"",
+  })
+
+  const handleOnChange=(e)=>{
+    const {value,id} =e.target
+    setFormData((prev)=>{
+      return {
+      ...prev,
+      [id]:value,
+    }})
+  }
+
   const showModal = () => {
-    setIsModalOpen(true);
+    setAddSection(true);
   };
-  const handleOk = () => {
-    setIsModalOpen(false);
+
+  const handleOk =async(e) => {
+    e.preventDefault
+    try {
+      const request = await post('/jobs/createjob',formData)
+      const response = request.data
+      console.log(response)
+      if(response.success){
+        setAddSection(false)
+        // alert(response.success)
+      }
+    } catch (error) {
+      console.log(error)
+    }
+    // setAddSection(false);
   };
   const handleCancel = () => {
-    setIsModalOpen(false);
+    setAddSection(false);
   };
+
   return (
     <div>
       <Button
@@ -21,15 +54,18 @@ function JobModal() {
       >
         + Add Job
       </Button>
-      <Modal
-        title="New Job Applied In:"
-        open={isModalOpen}
+
+      
+        <Modal
+        title={<span className="text-3xl font-normal">New Job Applied In :</span>}
+        open={addSection}
         onOk={handleOk}
         onCancel={handleCancel}
       >
+        {/* COMPANY NAME */}
         <div className="mb-4 flex items-center mt-5">
           <label
-            className="text-gray-700 text-sm font-bold mr-2"
+            className="text-gray-700 text-sm font-medium mr-2"
             htmlFor="companyName"
           >
             Company Name
@@ -45,13 +81,15 @@ function JobModal() {
             id="companyName"
             type="text"
             placeholder="Enter company name"
+            onChange={handleOnChange}
             required
           />
         </div>
 
+        {/* ROLE */}
         <div className="mb-4 flex items-center">
           <label
-            className="text-gray-700 text-sm font-bold mr-2"
+            className="text-gray-700 text-sm font-medium mr-2"
             htmlFor="role"
           >
             Role
@@ -67,13 +105,15 @@ function JobModal() {
             id="role"
             type="text"
             placeholder="Enter role"
+            onChange={handleOnChange}
             required
           />
         </div>
 
+        {/* LOCATION */}
         <div className="mb-4 flex items-center">
           <label
-            className="text-gray-700 text-sm font-bold mr-2 "
+            className="text-gray-700 text-sm font-medium mr-2 "
             htmlFor="location"
           >
             Location
@@ -89,13 +129,15 @@ function JobModal() {
             id="location"
             type="text"
             placeholder="Enter location"
+            onChange={handleOnChange}
             
           />
         </div>
 
+        {/* WORK TYPE */}
         <div className="mb-4 flex items-center">
           <label
-            className="text-gray-700 text-sm font-bold mr-2"
+            className="text-gray-700 text-sm font-medium mr-2"
             htmlFor="worktype"
           >
             Work Type
@@ -109,7 +151,8 @@ function JobModal() {
           <div className="relative">
             <select
               className="bg-white focus:outline-none focus:shadow-outline border border-gray-400 rounded-lg py-2 px-4 block w-full appearance-none leading-normal"
-              id="worktype"         
+              id="workType" 
+              onChange={handleOnChange}        
             >
               <option value="">Select work type</option>
               <option value="partTime">Part Time</option>
@@ -121,9 +164,10 @@ function JobModal() {
           </div>
         </div>
 
+        {/* STATUS */}
         <div className="mb-4 flex items-center">
           <label
-            className="text-gray-700 text-sm font-bold mr-2"
+            className="text-gray-700 text-sm font-medium mr-2"
             htmlFor="status"
           >
             Status
@@ -137,6 +181,7 @@ function JobModal() {
           <select
             className="bg-white focus:outline-none focus:shadow-outline border border-gray-400 rounded-lg py-2 px-4 block w-full appearance-none leading-normal"
             id="status"
+            onChange={handleOnChange}
           >
             <option value="">Select status</option>
             <option value="resumeScreening">Resume Screening</option>

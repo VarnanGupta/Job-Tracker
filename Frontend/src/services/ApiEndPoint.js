@@ -8,7 +8,7 @@ const instance = axios.create({
     withCredentials: true
 })
 
-export const get =(url,params)=>instance.get(url,{params})
-export const post =(url,data)=>instance.post(url, data)
-export const put =(url,data)=>instance.put(url, data)
-export const dele =(url)=>instance.delete(url)
+export const get =(url,params)=>instance.get(url,{params}) // read
+export const post =(url,data)=>instance.post(url, data) //create
+export const put =(url,data)=>instance.put(url, data) // update
+export const dele =(url)=>instance.delete(url) //delete
