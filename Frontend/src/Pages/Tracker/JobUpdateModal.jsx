@@ -1,29 +1,37 @@
 import { useState } from "react";
 import { Button, Modal } from "antd";
 
-export default function JobUpdateModal({handleSubmit , handleOnChange , handleClose}) {
-  
+export default function JobUpdateModal() {
+  const [addSection, setAddSection] = useState(false);
+  // const showModal = () => {
+  //   setAddSection(true);
+  // };
+  const handleSubmit = (e) => {
+    // setAddSection(false);
+    e.preventDefault();
+  };
+
   return (
     <div>
       {/* ADD JOB BUTTON */}
-      {/* <Button
+      <Button
         type="primary"
         className=" bg-black text-white rounded-3xl p-3 px-4 mt-5 mx-5"
         onClick={showModal}
       >
         + Add Job
-      </Button> */}
+      </Button>
       {/* MODAL */}
       <Modal
-        title={<span className="text-3xl font-normal">New Job Applied In :</span>}
-        open={addSection}
+        title="New Job Applied In:"
+        open={() => addSection(true)}
         onOk={handleSubmit}
-        onCancel={handleClose}
+        onCancel={() => setAddSection(false)}
       >
         {/* COMPANY NAME */}
         <div className="mb-4 flex items-center mt-5">
           <label
-            className="text-gray-700 text-sm font-medium mr-2"
+            className="text-gray-700 text-sm font-bold mr-2"
             htmlFor="companyName"
           >
             Company Name
@@ -39,15 +47,14 @@ export default function JobUpdateModal({handleSubmit , handleOnChange , handleCl
             id="companyName"
             type="text"
             placeholder="Enter company name"
-            onChange={handleOnChange}
-            required
+            // value={value.companyName}
           />
         </div>
 
         {/* ROLE */}
         <div className="mb-4 flex items-center">
           <label
-            className="text-gray-700 text-sm font-medium mr-2"
+            className="text-gray-700 text-sm font-bold mr-2"
             htmlFor="role"
           >
             Role
@@ -63,15 +70,14 @@ export default function JobUpdateModal({handleSubmit , handleOnChange , handleCl
             id="role"
             type="text"
             placeholder="Enter role"
-            onChange={handleOnChange}
-            required
+            // value={value.role}
           />
         </div>
 
         {/* LOCATION */}
         <div className="mb-4 flex items-center">
           <label
-            className="text-gray-700 text-sm font-medium mr-2 "
+            className="text-gray-700 text-sm font-bold mr-2"
             htmlFor="location"
           >
             Location
@@ -87,15 +93,14 @@ export default function JobUpdateModal({handleSubmit , handleOnChange , handleCl
             id="location"
             type="text"
             placeholder="Enter location"
-            onChange={handleOnChange}
-            
+            // value={value.location}
           />
         </div>
 
-        {/* WORK TYPE */}
+        {/* WORKTYPE */}
         <div className="mb-4 flex items-center">
           <label
-            className="text-gray-700 text-sm font-medium mr-2"
+            className="text-gray-700 text-sm font-bold mr-2"
             htmlFor="worktype"
           >
             Work Type
@@ -109,8 +114,7 @@ export default function JobUpdateModal({handleSubmit , handleOnChange , handleCl
           <div className="relative">
             <select
               className="bg-white focus:outline-none focus:shadow-outline border border-gray-400 rounded-lg py-2 px-4 block w-full appearance-none leading-normal"
-              id="workType" 
-              onChange={handleOnChange}        
+              id="worktype"
             >
               <option value="">Select work type</option>
               <option value="partTime">Part Time</option>
@@ -125,7 +129,7 @@ export default function JobUpdateModal({handleSubmit , handleOnChange , handleCl
         {/* STATUS */}
         <div className="mb-4 flex items-center">
           <label
-            className="text-gray-700 text-sm font-medium mr-2"
+            className="text-gray-700 text-sm font-bold mr-2"
             htmlFor="status"
           >
             Status
@@ -139,7 +143,6 @@ export default function JobUpdateModal({handleSubmit , handleOnChange , handleCl
           <select
             className="bg-white focus:outline-none focus:shadow-outline border border-gray-400 rounded-lg py-2 px-4 block w-full appearance-none leading-normal"
             id="status"
-            onChange={handleOnChange}
           >
             <option value="">Select status</option>
             <option value="resumeScreening">Resume Screening</option>
