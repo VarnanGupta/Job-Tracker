@@ -4,6 +4,7 @@ import { Button, Modal } from "antd";
 import { post } from "../../services/ApiEndPoint.js";
 
 function JobModal() {
+  // const [refresh, setRefresh] = useState(false)
   const [addSection, setAddSection] = useState(false);
   const [formData, setFormData] = useState({
     companyName: "",
@@ -35,6 +36,7 @@ function JobModal() {
       console.log(response);
       if (response.success) {
         setAddSection(false);
+        // setRefresh(!refresh);
         // alert(response.success)
       }
     } catch (error) {
@@ -45,6 +47,7 @@ function JobModal() {
   const handleCancel = () => {
     setAddSection(false);
   };
+  
 
   return (
     <div>
@@ -52,6 +55,7 @@ function JobModal() {
         type="primary"
         className=" bg-green-500 text-white px-6 py-3 rounded-full text-lg shadow-lg hover:bg-green-400 transition duration-300 p-3 mt-5 mx-5 font-mono"
         onClick={showModal}
+        footer
       >
         + Add Job
       </Button>
