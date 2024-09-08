@@ -1,55 +1,134 @@
-import React from "react";
 
 function Home() {
+  const features = [
+    {
+      title: "Centralized Dashboard",
+      description:
+        "View all your job applications in one place. See the status of each application, upcoming deadlines, and next steps at a glance.",
+    },
+    {
+      title: "Customizable Application Status",
+      description:
+        "Track the progress of each application—from 'Applied' to 'Interview Scheduled' to 'Offer Received.' Customize stages to fit your unique job search journey.",
+    },
+    {
+      title: "Automated Reminders",
+      description:
+        "Set reminders for follow-ups, interviews, or important deadlines so you never miss a step in your job search process.",
+    },
+    {
+      title: "Detailed Notes & Insights",
+      description:
+        "Add notes for each application—such as key points from interviews or recruiter conversations—to help you prepare better for next steps.",
+    },
+    {
+      title: "Export & Share",
+      description:
+        "Export your application data to share with career coaches, mentors, or friends for feedback and advice.",
+    },
+  ];
+
+  const testimonials = [
+    {
+      quote:
+        "This tool saved me hours of time and kept me organized during my job hunt. Highly recommend!",
+      name: "User Name",
+    },
+    {
+      quote:
+        "I landed my dream job thanks to this app. The reminders and notes feature were game-changers!",
+      name: "User Name",
+    },
+  ];
   return (
     <>
-    <div className="container mx-auto p-4 pt-6 md:p-6 lg:p-12">
-      <h1 className="text-3xl font-bold mb-4">Job Tracking Website</h1>
-      <p className="text-lg mb-8">Welcome to our job tracking website! Find your dream job or post a job to find the perfect candidate.</p>
-      <div className="flex flex-wrap justify-center mb-4">
-        <button className="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded">
-          Post a Job
-        </button>
-        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ml-4">
-          Search Jobs
-        </button>
+    <div>
+      {/* HEADER */}
+    <header className="container bg-[#fffdfd]  p-8 font-mono font-normal text-black mt-[40px]">
+      <div className="container mx-auto text-center">
+        <h1 className="text-4xl font-bold">
+          Stay Organized and Never Miss a Job Opportunity Again!
+        </h1>
+        <p className="mt-4 text-lg">
+          Your ultimate tool for tracking and managing all your job applications
+          in one place.
+        </p>
       </div>
-      <div className="flex flex-wrap justify-center mb-4">
-        <div className="w-full md:w-1/2 xl:w-1/3 p-6">
-          <h2 className="text-2xl font-bold mb-2">Recent Jobs</h2>
-          <ul>
-            <li>
-              <img src="https://picsum.photos/200/300" alt="Job 1" className="w-12 h-12 rounded-full mr-4" />
-              <span>Job 1: Software Engineer</span>
-            </li>
-            <li>
-              <img src="https://picsum.photos/200/301" alt="Job 2" className="w-12 h-12 rounded-full mr-4" />
-              <span>Job 2: Marketing Manager</span>
-            </li>
-            <li>
-              <img src="https://picsum.photos/200/302" alt="Job 3" className="w-12 h-12 rounded-full mr-4" />
-              <span>Job 3: Data Analyst</span>
-            </li>
-          </ul>
-        </div>
-        <div className="w-full md:w-1/2 xl:w-1/3 p-6">
-          <h2 className="text-2xl font-bold mb-2">Top Categories</h2>
-          <ul>
-            <li>
-              <img src="https://picsum.photos/200/303" alt="Category 1" className="w-12 h-12 rounded-full mr-4" />
-              <span>Category 1: Technology</span>
-            </li>
-            <li>
-              <img src="https://picsum.photos/200/304" alt="Category 2" className="w-12 h-12 rounded-full mr-4" />
-              <span>Category 2: Marketing</span>
-            </li>
-            <li>
-              <img src="https://picsum.photos/200/305" alt="Category 3" className="w-12 h-12 rounded-full mr-4" />
-              <span>Category 3: Finance</span>
-            </li>
-          </ul>
+    </header>
+
+    {/* Intro */}
+    <section className="py-16 font-mono font-normal">
+      <div className="container mx-auto text-center">
+        <p className="text-xl max-w-3xl mx-auto">
+          Looking for a new job can be overwhelming, especially when managing
+          multiple applications across different platforms. Our Job Application
+          Tracker is designed to simplify the job search process by helping you
+          keep track of every application, follow up on opportunities, and stay
+          on top of deadlines—all from a single, easy-to-use platform.
+        </p>
+      </div>
+    </section>
+
+    {/* Key Features */}
+    <section className="bg-[#fffdfd] py-16 font-mono">
+      <div className="container mx-auto">
+        <h2 className="text-3xl font-bold text-center mb-8">Key Features</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {features.map((feature, index) => (
+            <div
+              key={index}
+              className="bg-gray-100 p-6 rounded-lg shadow-lg"
+            >
+              <h3 className="text-2xl font-semibold mb-4">{feature.title}</h3>
+              <p>{feature.description}</p>
+            </div>
+          ))}
         </div>
       </div>
+    </section>
+    
+    {/* Start Tracking Your Job Applications Today! */}
+    <section className="bg-gray-200 text-black py-16 font-mono">
+      <div className="container mx-auto text-center">
+        <h2 className="text-3xl font-bold mb-4">
+          Start Tracking Your Job Applications Today!
+        </h2>
+        <p className="mb-8">
+          Sign Up for Free and Take Control of Your Job Search Journey.
+        </p>
+        <a
+          href="#"
+          className="bg-green-500 text-white px-6 py-3 rounded-full text-lg shadow-lg hover:bg-green-400 transition duration-300"
+        >
+          Get Started for Free
+        </a>
+      </div>
+    </section>
+    
+    {/* testimonials */}
+    <section className="py-16 font-mono">
+      <div className="container mx-auto text-center">
+        <h2 className="text-3xl font-bold mb-8">What Our Users Say</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {testimonials.map((testimonial, index) => (
+            <div
+              key={index}
+              className="bg-gray-100 p-6 rounded-lg shadow-lg"
+            >
+              <p className="text-xl">“{testimonial.quote}”</p>
+              <p className="mt-4 font-semibold">- {testimonial.name}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    {/* FOOTER */}
+    <footer className="bg-gray-800 text-white py-8 font-mono">
+      <div className="container mx-auto text-center">
+        <p>&copy; 2024 Job Application Tracker. All rights reserved.</p>
+      </div>
+    </footer>
     </div>
     </>
   )

@@ -48,12 +48,11 @@ function Table() {
 
   //Normal fetching data in table
   const [show, setShow] = useState(false);
-
   const [jobs, setJob] = useState([]);
   if (jobs) {
     console.log(jobs);
   }
-
+  // GETTING ALL JOBS FROM BACKEND AND DISPLAYING IN TABLE
   const getjobs = async () => {
     try {
       const request = await get("/jobs/getjob");
@@ -65,10 +64,13 @@ function Table() {
       console.log(error);
     }
   };
+
+  //LOADING PAGE WHEN CLICKED ON TRACKER
   useEffect(() => {
     getjobs();
   }, []);
 
+  // DELETING JOB FROM TABLE 
   const handleDelete = async (id) => {
     try {
       const request = await dele("/jobs/deletejob/" + id);
@@ -83,6 +85,7 @@ function Table() {
     }
   };
 
+  // FORMATTING DATE IN THE TABLE  
   const formatDate = (dateString) => {
     return new Date(dateString).toLocaleDateString("en-GB", {
       day: "2-digit",
@@ -97,8 +100,8 @@ function Table() {
   return (
     <div className="p-4 overflow-auto">
       {jobs.length ? (
-        <table className=" border-2 border-zinc-300 rounded-xl w-full text-sm">
-          <thead className="bg-teal-300 text-xl font-medium">
+        <table className=" border-1 border-zinc-300 rounded-xl w-full text-sm">
+          <thead className="bg-[#17BEBB] text-black font-mono text-xl font-medium">
             <tr>
               <td className="py-1 px-2 border ">Company Name</td>
               <td className="py-1 px-2 border ">Role</td>
@@ -109,7 +112,7 @@ function Table() {
               <td className="py-1 px-2 border ">Actions</td>
             </tr>
           </thead>
-          <tbody className="text-lg">
+          <tbody className="text-base font-mono">
             {jobs.map((data, index) => (
               <tr key={index}>
                 <td className="py- px-2 border ">{data.companyName}</td>
@@ -135,6 +138,7 @@ function Table() {
                       className="text-black"
                       cursor={"pointer"}
                       onClick={handleShow}
+
                     />
                     <MdDelete
                       size={20}
@@ -151,14 +155,15 @@ function Table() {
         </table>
       ) : (
         <>
-          <h1 className="font-semibold text-5xl flex justify-center mt-[250px] text-slate-400">
+          <h1 className="font-semibold font-mono text-5xl flex justify-center mt-[300px] text-slate-400">
             From Applications to Offers :{" "}
           </h1>
-          <h2 className="font-semibold text-5xl flex justify-center mt-[30px] text-slate-700">
-            Track Your Journey to Your Dream Job!
+          <h2 className="font-semibold font-mono text-5xl flex justify-center mt-[30px] text-slate-400">
+            Track Your Journey to Your<span className="text-slate-700 mx-5"> Dream Job!</span>
           </h2>
         </>
       )}
+       
     </div>
   );
 }
