@@ -50,7 +50,7 @@ function JobModal() {
     <div>
       <Button
         type="primary"
-        className=" bg-black text-white rounded-3xl p-3 px-4 mt-5 mx-5"
+        className=" bg-green-500 text-white px-6 py-3 rounded-full text-lg shadow-lg hover:bg-green-400 transition duration-300 p-3 mt-5 mx-5 font-mono"
         onClick={showModal}
       >
         + Add Job
@@ -58,11 +58,12 @@ function JobModal() {
 
       <Modal
         title={
-          <span className="text-3xl font-normal">New Job Applied In :</span>
+          <span className="text-3xl font-mono font-normal">New Job Applied In :</span>
         }
         open={addSection}
         onOk={handleOk}
         onCancel={handleCancel}
+
       >
         {/* COMPANY NAME */}
         <div className="mb-4 flex items-center mt-5">
