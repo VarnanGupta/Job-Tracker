@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
+import JobUpdateModal from "./JobUpdateModal.jsx";
 
 import { MdEdit } from "react-icons/md";
 import { MdDelete } from "react-icons/md";
 
-import { get, dele } from "../../services/ApiEndPoint.js";
+import { get, dele ,put } from "../../services/ApiEndPoint.js";
 
 // const jobs = [
 //   {
@@ -47,11 +48,14 @@ function Table() {
   // const[task,setTask]=
 
   //Normal fetching data in table
-  const [show, setShow] = useState(false);
-  const [jobs, setJob] = useState([]);
-  if (jobs) {
-    console.log(jobs);
-  }
+  const [jobs, setJob] = useState([]);// State to track all jobs
+
+  const [selectedJob, setSelectedJob] = useState(null); // State for the job to be edited
+  const [isModalOpen, setIsModalOpen] = useState(false); // State to control modal visibility
+
+  // if (jobs) {
+  //   console.log(jobs);
+  // }
   // GETTING ALL JOBS FROM BACKEND AND DISPLAYING IN TABLE
   const getjobs = async () => {
     try {
@@ -85,6 +89,34 @@ function Table() {
     }
   };
 
+
+  // Handle opening the edit modal
+  const handleEdit = (job) => {
+    setSelectedJob(job); // Set the job to be edited
+    setIsModalOpen(true); // Open the modal
+  };
+
+  // Handle modal close
+  const handleModalClose = () => {
+    setSelectedJob(null);
+    setIsModalOpen(false);
+  };
+
+  // Handle updating job from modal
+  const handleUpdateJob = async (updatedJob) => {
+    try {
+      const request = await put(`/jobs/updatejob/${selectedJob._id}`, updatedJob);
+      const response = request.data;
+      if (response.message) {
+        getjobs(); // Refresh the job list
+        handleModalClose(); // Close modal
+        alert(response.message);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   // FORMATTING DATE IN THE TABLE  
   const formatDate = (dateString) => {
     return new Date(dateString).toLocaleDateString("en-GB", {
@@ -93,9 +125,7 @@ function Table() {
       year: "numeric",
     });
   };
-  const handleShow = () => {
-    setShow(!show);
-  };
+  
 
   return (
     <div className="p-4 overflow-auto">
@@ -137,7 +167,7 @@ function Table() {
                       size={20}
                       className="text-black"
                       cursor={"pointer"}
-                      onClick={handleShow}
+                      onClick={() => handleEdit(data)} // Open modal with selected job
 
                     />
                     <MdDelete
@@ -162,6 +192,15 @@ function Table() {
             Track Your Journey to Your<span className="text-slate-700 mx-5"> Dream Job!</span>
           </h2>
         </>
+      )}
+      {/* Job Update Modal */}
+      {isModalOpen && selectedJob && (
+        <JobUpdateModal
+          open={isModalOpen}
+          onClose={() => setIsModalOpen(false)}
+          onSubmit={handleUpdateJob}
+          job={selectedJob} // Pass the selected job to the modal
+        />
       )}
        
     </div>

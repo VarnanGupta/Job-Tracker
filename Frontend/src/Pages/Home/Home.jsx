@@ -42,9 +42,9 @@ function Home() {
   ];
   return (
     <>
-    <div>
+    <div className="bg-[#153243] w-full">
       {/* HEADER */}
-    <header className="container bg-[#fffdfd]  p-8 font-mono font-normal text-black mt-[40px]">
+    <header className=" w-auto bg-[#153243] p-8 font-mono font-normal text-[#F5F1E3] mt-[40px]">
       <div className="container mx-auto text-center">
         <h1 className="text-4xl font-bold">
           Stay Organized and Never Miss a Job Opportunity Again!
@@ -57,7 +57,7 @@ function Home() {
     </header>
 
     {/* Intro */}
-    <section className="py-16 font-mono font-normal">
+    <section className="py-16 font-mono font-normal bg-[#153243] shadow-inner shadow-slate-700  text-[#F5F1E3]">
       <div className="container mx-auto text-center">
         <p className="text-xl max-w-3xl mx-auto">
           Looking for a new job can be overwhelming, especially when managing
@@ -70,7 +70,7 @@ function Home() {
     </section>
 
     {/* Key Features */}
-    <section className="bg-[#fffdfd] py-16 font-mono">
+    <section className="bg-[#CDC392] py-16 font-mono">
       <div className="container mx-auto">
         <h2 className="text-3xl font-bold text-center mb-8">Key Features</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
