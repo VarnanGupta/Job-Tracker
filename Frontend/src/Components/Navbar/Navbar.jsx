@@ -5,7 +5,7 @@ import { Button } from "antd";
 function Navbar() {
   
   return (
-    <div className="md:h-full md:w-[250px] bg-[#6D8A96] shadow-2xl shadow-slate-950 border-b-2 border-black flex md:flex-col justify-between">
+    <div className="md:h-full md:w-[250px] text-black bg-[#6D8A96] shadow-2xl shadow-slate-950 border-b-2 border-black flex md:flex-col justify-between">
       {/* <p className="text-2xl font-bold mt-7 ml-10
       ">jobTracker</p> */}
       <img src="/logo.png" alt="" className=""/>

@@ -4,6 +4,7 @@ import JobModal from './JobModal.jsx'
 
 
 function Tracker() {
+  
   return (
   <>
   <div className="container mx-auto w-full bg-[#fffdfd] text-black">

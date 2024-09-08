@@ -1,25 +1,51 @@
-import { useState } from "react";
-import { Button, Modal } from "antd";
+import { Modal } from 'antd'
+import { useState, useEffect } from 'react';
 
-export default function JobUpdateModal({handleOk, handleOnChange, handleCancel}) {
-  const [addSection, setAddSection] = useState(false);
-  // const showModal = () => {
-  //   setAddSection(true);
-  // };
-  const handleSubmit = (e) => {
-    // setAddSection(false);
-    e.preventDefault();
+const JobUpdateModal = ({ open, onClose, onSubmit, job }) => {
+  const [formData, setFormData] = useState({
+    companyName: "",
+    role: "",
+    location: "",
+    workType: "",
+    status: "",
+  });
+
+  // Initialize form data when job changes
+  useEffect(() => {
+    if (job) {
+      setFormData({
+        companyName: job.companyName || "",
+        role: job.role || "",
+        location: job.location || "",
+        workType: job.workType || "",
+        status: job.status || "",
+      });
+    }
+  }, [job]);
+
+  // Handle input changes
+  const handleInputChange = (e) => {
+    const { id, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [id]: value,
+    }));
+  };
+
+  // Handle form submission
+  const handleSubmit = () => {
+    onSubmit(formData); // Call the parent component's submit function
   };
 
   return (
-    <>
     <Modal
         title={
-          <span className="text-3xl font-normal">New Job Applied In :</span>
+          <span className="text-3xl font-mono font-normal">New Job Applied In :</span>
         }
-        open={addSection}
-        onOk={handleOk}
-        onCancel={handleCancel}
+        open={open}
+      onOk={handleSubmit}
+      onCancel={onClose}
+
       >
         {/* COMPANY NAME */}
         <div className="mb-4 flex items-center mt-5">
@@ -40,7 +66,8 @@ export default function JobUpdateModal({handleOk, handleOnChange, handleCancel})
             id="companyName"
             type="text"
             placeholder="Enter company name"
-            onChange={handleOnChange}
+            value={formData.companyName}
+          onChange={handleInputChange}
             required
           />
         </div>
@@ -64,7 +91,8 @@ export default function JobUpdateModal({handleOk, handleOnChange, handleCancel})
             id="role"
             type="text"
             placeholder="Enter role"
-            onChange={handleOnChange}
+            value={formData.role}
+          onChange={handleInputChange}
             required
           />
         </div>
@@ -88,7 +116,8 @@ export default function JobUpdateModal({handleOk, handleOnChange, handleCancel})
             id="location"
             type="text"
             placeholder="Enter location"
-            onChange={handleOnChange}
+            value={formData.location}
+          onChange={handleInputChange}
           />
         </div>
 
@@ -110,7 +139,8 @@ export default function JobUpdateModal({handleOk, handleOnChange, handleCancel})
             <select
               className="bg-white focus:outline-none focus:shadow-outline border border-gray-400 rounded-lg py-2 px-4 block w-full appearance-none leading-normal"
               id="workType"
-              onChange={handleOnChange}
+              value={formData.workType}
+          onChange={handleInputChange}
             >
               <option value="">Select work type</option>
               <option value="partTime">Part Time</option>
@@ -139,7 +169,8 @@ export default function JobUpdateModal({handleOk, handleOnChange, handleCancel})
           <select
             className="bg-white focus:outline-none focus:shadow-outline border border-gray-400 rounded-lg py-2 px-4 block w-full appearance-none leading-normal"
             id="status"
-            onChange={handleOnChange}
+            value={formData.status}
+          onChange={handleInputChange}
           >
             <option value="">Select status</option>
             <option value="resumeScreening">Resume Screening</option>
@@ -153,6 +184,7 @@ export default function JobUpdateModal({handleOk, handleOnChange, handleCancel})
           </select>
         </div>
       </Modal>
-    </>
-  );
+  )
 }
+
+export default JobUpdateModal
