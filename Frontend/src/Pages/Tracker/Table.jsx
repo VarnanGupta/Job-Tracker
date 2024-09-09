@@ -6,6 +6,7 @@ import { MdDelete } from "react-icons/md";
 
 import { get, dele ,put } from "../../services/ApiEndPoint.js";
 import toast from "react-hot-toast";
+import JobModal from "./JobModal.jsx";
 
 // const jobs = [
 //   {
@@ -132,6 +133,7 @@ function Table() {
 
   return (
     <div className="p-4 overflow-auto">
+      <JobModal getjobs={getjobs}/>
       {jobs.length ? (
         <table className=" border-1 border-zinc-300 rounded-xl w-full text-sm">
           <thead className="bg-[#17BEBB] text-black font-mono text-xl font-medium">
