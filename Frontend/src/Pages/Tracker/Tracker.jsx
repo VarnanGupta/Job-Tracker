@@ -1,6 +1,5 @@
 // import React, { useEffect, useState } from "react";
 import Table from "./Table";
-import JobModal from './JobModal.jsx'
 
 
 function Tracker() {
