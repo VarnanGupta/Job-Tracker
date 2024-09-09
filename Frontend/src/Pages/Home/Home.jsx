@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import { FaLinkedin } from "react-icons/fa6";
 
 function Home() {
   const features = [
@@ -57,11 +58,11 @@ function Home() {
       name: "Vivaan J.",
     },
   ];
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
-  const goLogin =()=>{
-    navigate('/login')
-  }
+  const goLogin = () => {
+    navigate("/login");
+  };
 
   return (
     <>
@@ -103,7 +104,7 @@ function Home() {
               {features.map((feature, index) => (
                 <div
                   key={index}
-                  className="bg-gray-100 p-6 rounded-lg shadow-md shadow-slate-500"
+                  className="bg-gray-100 p-6 rounded-lg shadow-lg shadow-slate-500"
                 >
                   <h3 className="text-2xl font-semibold mb-4">
                     {feature.title}
@@ -156,8 +157,15 @@ function Home() {
         <footer className="bg-gray-400 text-black py-8 font-mono">
           <div className="container mx-auto text-center">
             <p>
-              &copy; 2024 Job Application Tracker. All rights reserved. Made by{" "}
-              <span className="font-bold"><a href="https://www.linkedin.com/in/varnan-gupta112/">Varnan Gupta</a></span>
+              &copy; 2024 Job Application Tracker. All rights reserved. Made by 
+              <span className="font-extrabold mx-2">
+                <a
+                  href="https://www.linkedin.com/in/varnan-gupta112/"
+                  target="_blank"
+                >
+                  Varnan Gupta
+                </a>
+              </span>
             </p>
           </div>
         </footer>
