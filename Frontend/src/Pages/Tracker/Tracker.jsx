@@ -8,7 +8,7 @@ function Tracker() {
   return (
   <>
   <div className="mx-auto w-full bg-gray-300 text-black overflow-y-auto">
-      <JobModal />
+      {/* <JobModal /> */}
       <Table />
     </div>
   </>

@@ -37,7 +37,8 @@ function Register() {
 
   return (
     <div className="w-full h-screen flex justify-center items-center font-mono bg-gray-300">
-      <div className="form-container w-[400px] border border-gray-200 shadow-2xl shadow-slate-800 rounded-2xl bg-white p-5">
+      <img src="/signup.png" alt="" className=""/>
+      <div className="form-container w-[400px] mx-10 border border-gray-200 shadow-2xl shadow-slate-800 rounded-2xl bg-white p-5">  
         <h1 className="text-center mb-4 font-bold text-2xl ">Register</h1>
         <form className="flex flex-col" onSubmit={handleSubmit}>
           <div className="form-group mb-3">
@@ -88,7 +89,7 @@ function Register() {
             />
           </div>
 
-          <button className="btn btn-success w-full mb-3 bg-green-500 text-white p-3 rounded-3xl mt-3 font-normal">
+          <button className="btn btn-success w-full mb-3 bg-green-500 text-white p-3 rounded-3xl mt-3  hover:bg-green-400 transition duration-300">
             Register
           </button>
 
@@ -102,6 +103,7 @@ function Register() {
           </div>
         </form>
       </div>
+      
     </div>
   );
 }

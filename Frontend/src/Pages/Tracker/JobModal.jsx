@@ -2,8 +2,16 @@ import { useState } from "react";
 import { Button, Modal } from "antd";
 
 import { post } from "../../services/ApiEndPoint.js";
+import toast from "react-hot-toast";
 
-function JobModal() {
+function JobModal({getjobs}) {
+  const initialFormData = {  // Define initial form data separately
+    companyName: "",
+    role: "",
+    location: "",
+    workType: "fullTime",
+    status: "",
+  };
   // const [refresh, setRefresh] = useState(false)
   const [addSection, setAddSection] = useState(false);
   const [formData, setFormData] = useState({
@@ -36,16 +44,22 @@ function JobModal() {
       console.log(response);
       if (response.success) {
         setAddSection(false);
+        getjobs()
+        setFormData(initialFormData)
+        toast.success(response.message)
         // setRefresh(!refresh);
+        // window.location.reload();
         // alert(response.success)
       }
     } catch (error) {
       console.log(error);
+      toast.error(error.message)
     }
     // setAddSection(false);
   };
   const handleCancel = () => {
     setAddSection(false);
+    setFormData(initialFormData);
   };
   
 

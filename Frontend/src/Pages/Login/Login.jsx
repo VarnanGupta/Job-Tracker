@@ -69,7 +69,7 @@ function Login() {
             />
           </div>
 
-          <button className="btn btn-success w-full mb-3 bg-green-500 text-white p-3 rounded-3xl mt-3 font-normal">
+          <button className="btn btn-success w-full mb-3 bg-green-500 text-white p-3 rounded-3xl mt-3 hover:bg-green-400 transition duration-300">
             Login
           </button>
 

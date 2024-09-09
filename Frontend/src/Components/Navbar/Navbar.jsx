@@ -44,7 +44,7 @@ function Navbar() {
         <Button
           type="primary"
           onClick={handleLogout}
-          className=" bg-red-500 text-white font-mono flex justify-center rounded-3xl p-3 px-4 mt-2 mx-11"
+          className=" bg-red-500 text-white font-mono flex justify-center rounded-3xl p-3 px-4 mt-2 mx-11 hover:bg-green-400 transition duration-300"
         >
           Logout
         </Button>
