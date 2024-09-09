@@ -53,7 +53,7 @@ function JobModal() {
     <div>
       <Button
         type="primary"
-        className=" bg-green-500 text-white px-6 py-3 rounded-full text-lg shadow-lg hover:bg-green-400 transition duration-300 p-3 mt-5 mx-5 font-mono"
+        className=" bg-green-500 text-white px-6 py-3 rounded-full text-lg shadow-xl hover:bg-green-400 transition duration-300 p-3 mt-[40px] mx-[50px] font-mono"
         onClick={showModal}
         footer
       >

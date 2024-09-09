@@ -1,46 +1,43 @@
-import  { useState } from 'react'
-import {  useNavigate } from 'react-router-dom'
-import { post } from '../../services/ApiEndPoint'
-import toast from 'react-hot-toast'
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { post } from "../../services/ApiEndPoint";
+import toast from "react-hot-toast";
 
 function Login() {
-  const navigate = useNavigate()
-  const [value, setValue]= useState({email:"", password:""})
+  const navigate = useNavigate();
+  const [value, setValue] = useState({ email: "", password: "" });
 
-  const handleChange=(e)=>{
+  const handleChange = (e) => {
     setValue({
       ...value,
-      [e.target.name]: e.target.value
-    })
-  }
-  
+      [e.target.name]: e.target.value,
+    });
+  };
 
-  const handleSubmit=async (e)=>{
-    e.preventDefault()
+  const handleSubmit = async (e) => {
+    e.preventDefault();
     try {
-      const request= await post('/auth/login', value)
-      const response = request.data
-      if(response.success){
-        toast.success(response.message)
-        navigate('/')
-      } 
-      console.log(response)
-
-    } catch (error) {
-      if(error.response){
-        toast.error(error.response.data.message)
+      const request = await post("/auth/login", value);
+      const response = request.data;
+      if (response.success) {
+        toast.success(response.message);
+        navigate("/");
       }
-      console.log(error)
+      console.log(response);
+    } catch (error) {
+      if (error.response) {
+        toast.error(error.response.data.message);
+      }
+      console.log(error);
     }
-  }
-    
+  };
+
   return (
-    <div className="container h-screen flex justify-center items-center">
-      <div className="form-container border border-gray-200 shadow-md rounded-2xl bg-white w-1/2 p-5">
+    <div className="w-full h-screen flex justify-center items-center font-mono bg-gray-300">
+      <div className="form-container w-[400px] border border-gray-200 shadow-2xl shadow-slate-800 rounded-2xl bg-white p-5">
         <h1 className="text-center mb-4 font-bold text-2xl ">Login</h1>
-        <form className="flex flex-col" onSubmit={handleSubmit}>
-          
-          <div className="form-group mb-3"> 
+        <form className="flex flex-col " onSubmit={handleSubmit}>
+          <div className="form-group mb-3">
             <label htmlFor="email" className="form-label font-semibold">
               Email :
             </label>
@@ -72,17 +69,22 @@ function Login() {
             />
           </div>
 
-          <button className="btn btn-success w-full mb-3 bg-black text-white p-3 rounded-3xl mt-3 font-semibold">Login</button>
+          <button className="btn btn-success w-full mb-3 bg-green-500 text-white p-3 rounded-3xl mt-3 font-normal">
+            Login
+          </button>
 
           <div className="text-center">
             <p>
-              Don't have an account ? <a href="/register" className="text-blue-600 hover:text-blue-900">Register</a>
+              Don't have an account ?{" "}
+              <a href="/register" className="text-blue-600 hover:text-blue-900">
+                Register
+              </a>
             </p>
           </div>
         </form>
       </div>
     </div>
-  )
+  );
 }
 
-export default Login
+export default Login;

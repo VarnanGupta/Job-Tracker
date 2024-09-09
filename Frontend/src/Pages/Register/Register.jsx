@@ -1,44 +1,43 @@
 import { useState } from "react";
-import {  useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { post } from "../../services/ApiEndPoint";
 import toast from "react-hot-toast";
 
 function Register() {
-  const navigate = useNavigate()
-  const [value, setValue]= useState({
+  const navigate = useNavigate();
+  const [value, setValue] = useState({
     userName: "",
-    email:"",
+    email: "",
     password: "",
-  })
-  const handleChange=(e)=>{
+  });
+  const handleChange = (e) => {
     setValue({
       ...value,
-      [e.target.name]: e.target.value
-    })
-  }
-  
-  const handleSubmit=async (e)=>{
-    
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const request = await post('/auth/register',value)
-      const response = request.data
-      console.log("response", response) 
-      if(response.success){
-        toast.success(response.message)
-        navigate('/login')
+      const request = await post("/auth/register", value);
+      const response = request.data;
+      console.log("response", response);
+      if (response.success) {
+        toast.success(response.message);
+        navigate("/login");
       }
     } catch (error) {
-      if(error.response){
-        toast.error(error.response.data.message)
+      if (error.response) {
+        toast.error(error.response.data.message);
       }
-      console.log(error)
+      console.log(error);
     }
-  }
+  };
 
   return (
-    <div className="container h-screen flex justify-center items-center">
-      <div className="form-container border border-gray-200 shadow-md rounded-2xl bg-white w-1/2 p-5">
+    <div className="w-full h-screen flex justify-center items-center font-mono bg-gray-300">
+      <div className="form-container w-[400px] border border-gray-200 shadow-2xl shadow-slate-800 rounded-2xl bg-white p-5">
         <h1 className="text-center mb-4 font-bold text-2xl ">Register</h1>
         <form className="flex flex-col" onSubmit={handleSubmit}>
           <div className="form-group mb-3">
@@ -57,7 +56,7 @@ function Register() {
               onChange={handleChange}
             />
           </div>
-          <div className="form-group mb-3"> 
+          <div className="form-group mb-3">
             <label htmlFor="email" className="form-label font-semibold">
               Email :
             </label>
@@ -89,11 +88,16 @@ function Register() {
             />
           </div>
 
-          <button className="btn btn-success w-full mb-3 bg-black text-white p-3 rounded-3xl mt-3 font-semibold">Register</button>
+          <button className="btn btn-success w-full mb-3 bg-green-500 text-white p-3 rounded-3xl mt-3 font-normal">
+            Register
+          </button>
 
           <div className="text-center">
             <p>
-              Already have an account ? <a href="/login" className="text-blue-600 hover:text-blue-900">Login</a>
+              Already have an account ?{" "}
+              <a href="/login" className="text-blue-600 hover:text-blue-900">
+                Login
+              </a>
             </p>
           </div>
         </form>

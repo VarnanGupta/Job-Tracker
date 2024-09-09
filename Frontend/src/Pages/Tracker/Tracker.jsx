@@ -7,7 +7,7 @@ function Tracker() {
   
   return (
   <>
-  <div className="container mx-auto w-full bg-[#fffdfd] text-black">
+  <div className="mx-auto w-full bg-gray-300 text-black overflow-y-auto">
       <JobModal />
       <Table />
     </div>
