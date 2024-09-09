@@ -5,6 +5,7 @@ import { MdEdit } from "react-icons/md";
 import { MdDelete } from "react-icons/md";
 
 import { get, dele ,put } from "../../services/ApiEndPoint.js";
+import toast from "react-hot-toast";
 
 // const jobs = [
 //   {
@@ -82,10 +83,11 @@ function Table() {
       const response = request.data;
       if (response.message) {
         getjobs();
-        alert(request.data.message);
+        toast.success(request.data.message);
       }
     } catch (error) {
       console.log(error);
+      toast.error(error.message)
     }
   };
 
@@ -110,10 +112,11 @@ function Table() {
       if (response.message) {
         getjobs(); // Refresh the job list
         handleModalClose(); // Close modal
-        alert(response.message);
+        toast.success(request.data.message);
       }
     } catch (error) {
       console.log(error);
+      toast.error(error.message)
     }
   };
 

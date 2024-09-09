@@ -7,10 +7,9 @@ import Home from "./Pages/Home/Home.jsx";
 import Tracker from "./Pages/Tracker/Tracker.jsx";
 import Layout from "./Layout.jsx";
 import Login from "./Pages/Login/Login.jsx";
-// import Signup from "./Pages/Register/Register.jsx";
-import {Toaster} from 'react-hot-toast'
 import Register from "./Pages/Register/Register.jsx";
-// import JobUpdateModal from "./Pages/Tracker/JobUpdateModal.jsx";
+import {Toaster} from 'react-hot-toast'
+
 
 const router = createBrowserRouter([
   {
@@ -42,7 +41,7 @@ createRoot(document.getElementById("root")).render(
   <StrictMode>
     <RouterProvider router={router}>  
       <App />
-      <Toaster />
     </RouterProvider>
+      <Toaster />
   </StrictMode>
 );
