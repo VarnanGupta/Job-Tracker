@@ -133,9 +133,9 @@ function Table() {
 
   return (
     <div className="p-4 overflow-auto">
-      <JobModal getjobs={getjobs}/>
+      <JobModal getjobs={getjobs} className=""/>
       {jobs.length ? (
-        <table className=" border-1 border-zinc-300 rounded-xl w-full text-sm">
+        <table className="mt-10 border-1 border-zinc-300 rounded-xl w-full text-sm">
           <thead className="bg-[#17BEBB] text-black font-mono text-xl font-medium">
             <tr>
               <td className="py-1 px-2 border ">Company Name</td>

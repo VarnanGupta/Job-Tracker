@@ -104,7 +104,7 @@ function Home() {
               {features.map((feature, index) => (
                 <div
                   key={index}
-                  className="bg-gray-100 p-6 rounded-lg shadow-lg shadow-slate-500"
+                  className="bg-gray-100 p-6 rounded-lg shadow-lg shadow-slate-500 transition-transform duration-300 ease-in-out hover:scale-105 hover:shadow-3xl hover:shadow-gray-700"
                 >
                   <h3 className="text-2xl font-semibold mb-4">
                     {feature.title}
@@ -136,7 +136,7 @@ function Home() {
         </section>
 
         {/* testimonials */}
-        <section className="py-16 font-mono bg-gray-300">
+        {/* <section className="py-16 font-mono bg-gray-300">
           <div className="container mx-auto text-center">
             <h2 className="text-3xl font-bold mb-8">What Our Users Say</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -151,13 +151,29 @@ function Home() {
               ))}
             </div>
           </div>
+        </section> */}
+        <section className="py-16 font-mono bg-gray-300">
+          <div className="container mx-auto text-center">
+            <h2 className="text-3xl font-bold mb-8">What Our Users Say</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {testimonials.map((testimonial, index) => (
+                <div
+                  key={index}
+                  className="bg-gray-100 p-6 rounded-lg shadow-lg shadow-slate-500 transition-transform duration-300 ease-in-out hover:scale-105 hover:shadow-3xl hover:shadow-gray-700"
+                >
+                  <p className="text-xl">“{testimonial.quote}”</p>
+                  <p className="mt-4 font-semibold">- {testimonial.name}</p>
+                </div>
+              ))}
+            </div>
+          </div>
         </section>
 
         {/* FOOTER */}
         <footer className="bg-gray-400 text-black py-8 font-mono">
           <div className="container mx-auto text-center">
             <p>
-              &copy; 2024 Job Application Tracker. All rights reserved. Made by 
+              &copy; 2024 Job Application Tracker. All rights reserved. Made by
               <span className="font-extrabold mx-2">
                 <a
                   href="https://www.linkedin.com/in/varnan-gupta112/"
