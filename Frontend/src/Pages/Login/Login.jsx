@@ -22,9 +22,9 @@ function Login() {
       const response = request.data
       if(response.success){
         toast.success(response.message)
-        navigate('/tracker')
+        navigate('/')
       } 
-      console.log(request)
+      console.log(response)
 
     } catch (error) {
       if(error.response){
