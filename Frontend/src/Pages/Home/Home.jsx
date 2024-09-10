@@ -128,7 +128,7 @@ function Home() {
             <a
               href="#"
               onClick={goLogin}
-              className="bg-green-500 text-white px-6 py-3 rounded-full text-lg shadow-lg hover:bg-green-400 transition duration-300"
+              className="bg-green-500 text-white px-6 py-3 rounded-full text-lg shadow-lg shadow-slate-600 hover:bg-green-400 transition duration-300"
             >
               Get Started for Free
             </a>
@@ -136,22 +136,6 @@ function Home() {
         </section>
 
         {/* testimonials */}
-        {/* <section className="py-16 font-mono bg-gray-300">
-          <div className="container mx-auto text-center">
-            <h2 className="text-3xl font-bold mb-8">What Our Users Say</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {testimonials.map((testimonial, index) => (
-                <div
-                  key={index}
-                  className="bg-gray-100 p-6 rounded-lg shadow-lg shadow-slate-500"
-                >
-                  <p className="text-xl">“{testimonial.quote}”</p>
-                  <p className="mt-4 font-semibold">- {testimonial.name}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section> */}
         <section className="py-16 font-mono bg-gray-300">
           <div className="container mx-auto text-center">
             <h2 className="text-3xl font-bold mb-8">What Our Users Say</h2>
