@@ -139,7 +139,7 @@ function Table() {
       <JobModal getjobs={getjobs} className=""/>
       {jobs.length ? (
         <table className="mt-10 border-none bg-blue-700 shadow-slate-600 shadow-2xl rounded-3xl w-full text-sm ">
-          <thead className="bg-[#0E131F] border-none text-white font-mono text-xl font-semibold">
+          <thead className="bg-[#0E131F] border-none text-white font-mono text-xl rounded-3xl font-semibold">
             <tr>
               <td className="py-1 px-4  ">S.No.</td> {/* Serial Number Column */}
               <td className="py-1 px-4  ">Company Name</td>
@@ -154,17 +154,17 @@ function Table() {
           <tbody className="font-mono text-lg bg-gray-100 border-none">
             {jobs.map((data, index) => (
               <tr key={index}>
-                <td className="py-2 px-4 border-b border-slate-200">{index + 1}.</td> {/* Serial Number */}
-                <td className="py-2 px-4 border-b border-slate-200">{data.companyName}</td>
-                <td className="py-2 px-4 border-b border-slate-200">{data.role}</td>
-                <td className="py-2 px-4 border-b border-slate-200">{data.workType}</td>
-                <td className="py-2 px-4 border-b border-slate-200">{data.location}</td>
-                <td className="py-2 px-4 border-b border-slate-200">
+                <td className="py-4 px-4 border-b border-slate-200">{index + 1}.</td> {/* Serial Number */}
+                <td className="py-4 px-4 border-b border-slate-200">{data.companyName}</td>
+                <td className="py-4 px-4 border-b border-slate-200">{data.role}</td>
+                <td className="py-4 px-4 border-b border-slate-200">{data.workType}</td>
+                <td className="py-4 px-4 border-b border-slate-200">{data.location}</td>
+                <td className="py-4 px-4 border-b border-slate-200">
                   {formatDate(data.createdAt)}
                 </td>
-                <td className="py-2 px-4 border-b border-slate-200 ">
+                <td className="py-4 px-4 border-b border-slate-200 ">
                   <span 
-                  className={`p-2 font-bold rounded-xl border text-xs ${
+                  className={`p-3 font-bold rounded-xl border text-xs ${
                     data.status === 'resumeScreening' 
                       ? 'bg-yellow-200 text-yellow-800 border-yellow-800'
                       : data.status === 'TechInterview1' || data.status === 'TechInterview2' || data.status === 'TechInterview3' || data.status === 'TechInterview4' || data.status === 'HRinterview'

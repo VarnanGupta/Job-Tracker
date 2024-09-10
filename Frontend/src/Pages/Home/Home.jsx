@@ -57,6 +57,11 @@ function Home() {
         "Exporting my resume and sharing it with my career coach was seamless. It made getting feedback quick and convenient.",
       name: "Vivaan J.",
     },
+    {
+      quote:
+        "The user-friendly interface made it easy to navigate through my job applications. I could focus more on finding the right job rather than managing the process.",
+      name: "Prakhar V.",
+    },
   ];
   const navigate = useNavigate();
 
@@ -70,7 +75,7 @@ function Home() {
         {/* HEADER */}
         <header className=" w-auto bg-gray-300 p-8 font-mono font-normal text-black mt-[50px]">
           <div className="container mx-auto text-center">
-            <h1 className="text-4xl font-bold">
+            <h1 className="text-6xl font-bold">
               Stay Organized and Never Miss a Job Opportunity Again!
             </h1>
             <p className="mt-4 text-lg">
@@ -83,7 +88,7 @@ function Home() {
         {/* Intro */}
         <section className="py-16 font-mono font-normal bg-gray-300 text-black">
           <div className="container mx-auto text-center">
-            <p className="text-xl max-w-3xl mx-auto">
+            <p className="text-xl w-full px-24 mx-auto">
               Looking for a new job can be overwhelming, especially when
               managing multiple applications across different platforms. Our Job
               Application Tracker is designed to simplify the job search process
