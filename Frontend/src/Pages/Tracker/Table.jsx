@@ -138,9 +138,9 @@ function Table() {
     <div className="p-[70px] overflow-auto h-screen ">
       <JobModal getjobs={getjobs} className=""/>
       {jobs.length ? (
-        <table className="mt-10 border-none bg-blue-700 shadow-slate-600 shadow-2xl rounded-3xl w-full text-sm ">
-          <thead className="bg-[#0E131F] border-none text-white font-mono text-xl rounded-3xl font-semibold">
-            <tr>
+        <table className="mt-10 border-none bg-blue-700 shadow-slate-600 shadow-2xl rounded-2xl  w-full text-sm overflow-hidden">
+          <thead className="bg-[#0E131F] border-none text-white font-mono text-xl font-semibold">
+            <tr className="border-none">
               <td className="py-1 px-4  ">S.No.</td> {/* Serial Number Column */}
               <td className="py-1 px-4  ">Company Name</td>
               <td className="py-1 px-4  ">Role</td>
@@ -153,7 +153,9 @@ function Table() {
           </thead>
           <tbody className="font-mono text-lg bg-gray-100 border-none">
             {jobs.map((data, index) => (
-              <tr key={index}>
+              <tr key={index} className={`${
+                index === 0 ? "border-none" : "border-t border-slate-200"
+              } ${index === jobs.length - 1 ? "rounded-b-3xl" : ""}`}>
                 <td className="py-4 px-4 border-b border-slate-200">{index + 1}.</td> {/* Serial Number */}
                 <td className="py-4 px-4 border-b border-slate-200">{data.companyName}</td>
                 <td className="py-4 px-4 border-b border-slate-200">{data.role}</td>
