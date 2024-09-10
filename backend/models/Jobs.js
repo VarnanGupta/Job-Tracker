@@ -10,7 +10,7 @@ const JobsSchema = mongoose.Schema({
     workType :{
         type : String,
         enum: ["partTime", "fullTime","freelancer","internship","contract"],
-        // default : "incomplete",
+        default : "partTime",
     },
     location : {
         type : String,
@@ -18,7 +18,8 @@ const JobsSchema = mongoose.Schema({
     status : {
         type : String,
         enum: ["resumeScreening", "TechInterview1","TechInterview2","TechInterview3","TechInterview4","HRinterview","rejected","selected"],
-        default : "incomplete",
+        default : "resumeScreening",
+        required:true
     },
     
 },{

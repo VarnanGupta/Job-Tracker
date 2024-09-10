@@ -4,13 +4,14 @@ import { Button, Modal } from "antd";
 import { post } from "../../services/ApiEndPoint.js";
 import toast from "react-hot-toast";
 
-function JobModal({getjobs}) {
-  const initialFormData = {  // Define initial form data separately
+function JobModal({ getjobs }) {
+  const initialFormData = {
+    // Define initial form data separately
     companyName: "",
     role: "",
     location: "",
-    workType: "fullTime",
-    status: "",
+    workType: "" ||"fullTime",
+    status: "" ||"resumeScreening",
   };
   // const [refresh, setRefresh] = useState(false)
   const [addSection, setAddSection] = useState(false);
@@ -44,16 +45,16 @@ function JobModal({getjobs}) {
       console.log(response);
       if (response.success) {
         setAddSection(false);
-        getjobs()
-        setFormData(initialFormData)
-        toast.success(response.message)
+        getjobs();
+        setFormData(initialFormData);
+        toast.success(response.message);
         // setRefresh(!refresh);
         // window.location.reload();
         // alert(response.success)
       }
     } catch (error) {
       console.log(error);
-      toast.error(error.message)
+      toast.error(error.message);
     }
     // setAddSection(false);
   };
@@ -61,13 +62,12 @@ function JobModal({getjobs}) {
     setAddSection(false);
     setFormData(initialFormData);
   };
-  
 
   return (
-    <div>
+    <div className="mt-[-31px]">
       <Button
         type="primary"
-        className=" bg-green-500 text-white px-6 py-3 rounded-full text-lg shadow-xl hover:bg-green-400 transition duration-300 p-3 mt-[40px] mx-[50px] font-mono"
+        className=" bg-green-500 text-white px-6 py-3 rounded-full text-lg shadow-xl hover:bg-green-400 transition duration-300 p-3 font-mono"
         onClick={showModal}
         footer
       >
@@ -76,12 +76,13 @@ function JobModal({getjobs}) {
 
       <Modal
         title={
-          <span className="text-3xl font-mono font-normal">New Job Applied In :</span>
+          <span className="text-3xl font-mono font-normal">
+            New Job Applied In :
+          </span>
         }
         open={addSection}
         onOk={handleOk}
         onCancel={handleCancel}
-
       >
         {/* COMPANY NAME */}
         <div className="mb-4 flex items-center mt-5">

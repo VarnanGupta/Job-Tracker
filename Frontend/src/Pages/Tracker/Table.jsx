@@ -2,7 +2,10 @@ import { useState, useEffect } from "react";
 import JobUpdateModal from "./JobUpdateModal.jsx";
 
 import { MdEdit } from "react-icons/md";
-import { MdDelete } from "react-icons/md";
+// import { RiPencilLine } from "react-icons/ri";
+import { TiDelete } from "react-icons/ti";
+// import { MdDelete } from "react-icons/md";
+// import { FcFullTrash } from "react-icons/fc";
 
 import { get, dele ,put } from "../../services/ApiEndPoint.js";
 import toast from "react-hot-toast";
@@ -132,55 +135,63 @@ function Table() {
   
 
   return (
-    <div className="p-4 overflow-auto">
+    <div className="p-[70px] overflow-auto h-screen ">
       <JobModal getjobs={getjobs} className=""/>
       {jobs.length ? (
-        <table className="mt-10 border-1 border-zinc-300 rounded-xl w-full text-sm">
-          <thead className="bg-[#17BEBB] text-black font-mono text-xl font-medium">
+        <table className="mt-10 border-none bg-blue-700 shadow-slate-600 shadow-2xl rounded-3xl w-full text-sm ">
+          <thead className="bg-[#0E131F] border-none text-white font-mono text-xl font-semibold">
             <tr>
-              <td className="py-1 px-2 border ">Company Name</td>
-              <td className="py-1 px-2 border ">Role</td>
-              <td className="py-1 px-2 border ">Work-Type</td>
-              <td className="py-1 px-2 border ">Location</td>
-              <td className="py-1 px-2 border ">Applied-On</td>
-              <td className="py-1 px-2 border ">Status</td>
-              <td className="py-1 px-2 border ">Actions</td>
+              <td className="py-1 px-4  ">S.No.</td> {/* Serial Number Column */}
+              <td className="py-1 px-4  ">Company Name</td>
+              <td className="py-1 px-4  ">Role</td>
+              <td className="py-1 px-4  ">Work-Type</td>
+              <td className="py-1 px-4  ">Location</td>
+              <td className="py-1 px-4  ">Applied-On</td>
+              <td className="py-1 px-4  ">Status</td>
+              <td className="py-1 px-4  ">Actions</td>
             </tr>
           </thead>
-          <tbody className="text-base font-mono">
+          <tbody className="font-mono text-lg bg-gray-100 border-none">
             {jobs.map((data, index) => (
               <tr key={index}>
-                <td className="py- px-2 border ">{data.companyName}</td>
-                <td className="py- px-2 border ">{data.role}</td>
-                <td className="py- px-2 border ">{data.workType}</td>
-                <td className="py- px-2 border ">{data.location}</td>
-                <td className="py- px-2 border ">
+                <td className="py-2 px-4 border-b border-slate-200">{index + 1}</td> {/* Serial Number */}
+                <td className="py-2 px-4 border-b border-slate-200">{data.companyName}</td>
+                <td className="py-2 px-4 border-b border-slate-200">{data.role}</td>
+                <td className="py-2 px-4 border-b border-slate-200">{data.workType}</td>
+                <td className="py-2 px-4 border-b border-slate-200">{data.location}</td>
+                <td className="py-2 px-4 border-b border-slate-200">
                   {formatDate(data.createdAt)}
                 </td>
-                <td className="py- px-2 border ">
+                <td className="py-2 px-4 border-b border-slate-200 ">
                   <span className="bg-green-200 p-1 rounded-xl text-green-800 border-green-800 border text-xs">
                     {data.status}
                   </span>
                 </td>
 
                 {/* *********************ACTIONS**************** */}
-                <td className="py-1 px-2 border flex ">
+                <td className="py-1 px-4 border-b border-slate-200">
                   {/* <BsThreeDots onClick={handleShow} size={20} cursor={'pointer'}/>
                   {show && ( */}
-                  <div className="flex ">
+                  <div className="flex gap-6">
                     <MdEdit
-                      size={20}
-                      className="text-black"
+                      size={25}
+                      className="text-slate-600"
                       cursor={"pointer"}
                       onClick={() => handleEdit(data)} // Open modal with selected job
-
                     />
-                    <MdDelete
+                    
+                    {/* <MdDelete
                       size={20}
                       className="text-red-500"
                       cursor={"pointer"}
                       onClick={() => handleDelete(data._id)}
-                    />
+                    /> */}
+                    
+                    <TiDelete 
+                      size={25}
+                      className="text-red-500"
+                      cursor={"pointer"}
+                      onClick={() => handleDelete(data._id)}/>
                   </div>
                   {/* )} */}
                 </td>
