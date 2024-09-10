@@ -154,7 +154,7 @@ function Table() {
           <tbody className="font-mono text-lg bg-gray-100 border-none">
             {jobs.map((data, index) => (
               <tr key={index}>
-                <td className="py-2 px-4 border-b border-slate-200">{index + 1}</td> {/* Serial Number */}
+                <td className="py-2 px-4 border-b border-slate-200">{index + 1}.</td> {/* Serial Number */}
                 <td className="py-2 px-4 border-b border-slate-200">{data.companyName}</td>
                 <td className="py-2 px-4 border-b border-slate-200">{data.role}</td>
                 <td className="py-2 px-4 border-b border-slate-200">{data.workType}</td>
@@ -163,7 +163,18 @@ function Table() {
                   {formatDate(data.createdAt)}
                 </td>
                 <td className="py-2 px-4 border-b border-slate-200 ">
-                  <span className="bg-green-200 p-1 rounded-xl text-green-800 border-green-800 border text-xs">
+                  <span 
+                  className={`p-2 font-bold rounded-xl border text-xs ${
+                    data.status === 'resumeScreening' 
+                      ? 'bg-yellow-200 text-yellow-800 border-yellow-800'
+                      : data.status === 'TechInterview1' || data.status === 'TechInterview2' || data.status === 'TechInterview3' || data.status === 'TechInterview4' || data.status === 'HRinterview'
+                      ? 'bg-blue-200 text-blue-800 border-blue-800'
+                      : data.status === 'rejected'
+                      ? 'bg-red-200 text-red-800 border-red-800'
+                      : data.status === 'selected'
+                      ? 'bg-green-200 text-green-800 border-green-800'
+                      : 'bg-gray-200 text-gray-800 border-gray-800' // Default styling for other statuses
+                  }`}>
                     {data.status}
                   </span>
                 </td>
