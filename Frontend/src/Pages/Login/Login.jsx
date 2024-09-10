@@ -2,8 +2,11 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { post } from "../../services/ApiEndPoint";
 import toast from "react-hot-toast";
+import { useDispatch } from "react-redux";
+import { login } from "../../Store.js";
 
 function Login() {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const [value, setValue] = useState({ email: "", password: "" });
 
@@ -21,7 +24,8 @@ function Login() {
       const response = request.data;
       if (response.success) {
         toast.success(response.message);
-        navigate("/");
+        dispatch(login());
+        navigate("/tracker");
       }
       console.log(response);
     } catch (error) {
