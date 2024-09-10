@@ -27,13 +27,28 @@ function Navbar() {
       {/* <img src="/logo.png" alt="" className=""/> */}
 
       <nav className="flex md:flex-col gap-3 text-2xl font-semibold font-mono ml-5">
-        <NavLink to={"/"}>Home</NavLink>
-        <NavLink to={"/tracker"}>Tracker</NavLink>
+        <NavLink
+          to={"/"}
+          className={({ isActive }) =>
+            `${isActive ? "text-yellow-400" : "text-white"}`
+          }
+        >
+          Home
+        </NavLink>
+        <NavLink
+          to={"/tracker"}
+          className={({ isActive }) =>
+            `${isActive ? "text-yellow-400" : "text-white"}`
+          }
+        >
+          Tracker
+        </NavLink>
         {/* <NavLink to={""}>Build Resume</NavLink> */}
         <a
           className="flex items-center gap-2"
           href="https://pro-khar.github.io/resume-builder/"
           target="_blank"
+          
         >
           Build Resume <BiLinkExternal />{" "}
         </a>
