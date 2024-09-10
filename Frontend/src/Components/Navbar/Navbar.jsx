@@ -4,9 +4,12 @@ import { get } from "../../services/ApiEndPoint.js";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { BiLinkExternal } from "react-icons/bi";
+import { useDispatch } from "react-redux";
+import { logout } from "../../Store.js";
 
 function Navbar() {
   const navigate = useNavigate();
+  const dispatch = useDispatch()
   const handleLogout = async () => {
     try {
       const request = await get("/auth/logout");
@@ -14,6 +17,7 @@ function Navbar() {
       console.log(response);
       if (response.success) {
         toast.success(response.message);
+        dispatch(logout())
         navigate("/login");
       }
     } catch (error) {

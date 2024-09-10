@@ -8,8 +8,10 @@ import Tracker from "./Pages/Tracker/Tracker.jsx";
 import Layout from "./Layout.jsx";
 import Login from "./Pages/Login/Login.jsx";
 import Register from "./Pages/Register/Register.jsx";
-import {Toaster} from 'react-hot-toast'
-
+import { Toaster } from "react-hot-toast";
+import store from "./Store.js";
+import { Provider } from "react-redux";
+import ProtectedRoute from "./Components/ProtectedRoute.jsx";
 
 const router = createBrowserRouter([
   {
@@ -22,7 +24,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/tracker",
-        element: <Tracker />,
+        element: (
+          <ProtectedRoute>
+            <Tracker />
+          </ProtectedRoute>
+        ),
       },
       {
         path: "/login",
@@ -30,7 +36,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/register",
-        
+
         element: <Register />,
       },
     ],
@@ -39,9 +45,11 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <RouterProvider router={router}>  
-      <App />
-    </RouterProvider>
-      <Toaster />
+    <Provider store={store}>
+      <RouterProvider router={router}>
+        <App />
+      </RouterProvider>
+        <Toaster />
+    </Provider>
   </StrictMode>
 );
