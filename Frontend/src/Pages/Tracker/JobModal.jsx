@@ -76,7 +76,7 @@ function JobModal({ getjobs }) {
 
       <Modal
         title={
-          <span className="text-3xl font-mono font-normal">
+          <span className="text-3xl font-mono font-semibold">
             New Job Applied In :
           </span>
         }
@@ -85,9 +85,9 @@ function JobModal({ getjobs }) {
         onCancel={handleCancel}
       >
         {/* COMPANY NAME */}
-        <div className="mb-4 flex items-center mt-5">
+        <div className="font-mono mb-4 flex items-center mt-5">
           <label
-            className="text-gray-700 text-sm font-medium mr-2"
+            className="text-gray-700 text-lg font-medium mr-2"
             htmlFor="companyName"
           >
             Company Name
@@ -108,10 +108,33 @@ function JobModal({ getjobs }) {
           />
         </div>
 
-        {/* ROLE */}
-        <div className="mb-4 flex items-center">
+        {/* LOCATION */}
+        <div className="font-mono mb-4 flex items-center">
           <label
-            className="text-gray-700 text-sm font-medium mr-2"
+            className="text-gray-700 text-lg font-medium mr-2 "
+            htmlFor="location"
+          >
+            Location
+          </label>
+          <label
+            className="text-gray-700 text-sm font-bold mr-2"
+            htmlFor="location"
+          >
+            :
+          </label>
+          <input
+            className="bg-white focus:outline-none focus:shadow-outline border border-gray-400 rounded-lg py-2 px-4 block w-full appearance-none leading-normal"
+            id="location"
+            type="text"
+            placeholder="Enter location"
+            onChange={handleOnChange}
+          />
+        </div>
+
+        {/* ROLE */}
+        <div className="font-mono mb-4 flex items-center">
+          <label
+            className="text-gray-700 text-lg font-medium mr-2"
             htmlFor="role"
           >
             Role
@@ -132,63 +155,10 @@ function JobModal({ getjobs }) {
           />
         </div>
 
-        {/* LOCATION */}
-        <div className="mb-4 flex items-center">
-          <label
-            className="text-gray-700 text-sm font-medium mr-2 "
-            htmlFor="location"
-          >
-            Location
-          </label>
-          <label
-            className="text-gray-700 text-sm font-bold mr-2"
-            htmlFor="location"
-          >
-            :
-          </label>
-          <input
-            className="bg-white focus:outline-none focus:shadow-outline border border-gray-400 rounded-lg py-2 px-4 block w-full appearance-none leading-normal"
-            id="location"
-            type="text"
-            placeholder="Enter location"
-            onChange={handleOnChange}
-          />
-        </div>
-
-        {/* WORK TYPE */}
-        <div className="mb-4 flex items-center">
-          <label
-            className="text-gray-700 text-sm font-medium mr-2"
-            htmlFor="worktype"
-          >
-            Work Type
-          </label>
-          <label
-            className="text-gray-700 text-sm font-bold mr-2"
-            htmlFor="worktype"
-          >
-            :
-          </label>
-          <div className="relative">
-            <select
-              className="bg-white focus:outline-none focus:shadow-outline border border-gray-400 rounded-lg py-2 px-4 block w-full appearance-none leading-normal"
-              id="workType"
-              onChange={handleOnChange}
-            >
-              <option value="">Select work type</option>
-              <option value="partTime">Part Time</option>
-              <option value="fullTime">Full Time</option>
-              <option value="freelancer">Freelancer</option>
-              <option value="internship">Internship</option>
-              <option value="contract">Contract</option>
-            </select>
-          </div>
-        </div>
-
         {/* STATUS */}
-        <div className="mb-4 flex items-center">
+        <div className="font-mono mb-4 flex items-center">
           <label
-            className="text-gray-700 text-sm font-medium mr-2"
+            className="text-gray-700 text-lg font-medium mr-2"
             htmlFor="status"
           >
             Status
@@ -215,6 +185,37 @@ function JobModal({ getjobs }) {
             <option value="selected">Selected</option>
           </select>
         </div>
+
+        {/* WORK TYPE */}
+        <div className="font-mono mb-4 flex items-center">
+          <label
+            className="text-gray-700 text-lg font-medium mr-2"
+            htmlFor="worktype"
+          >
+            Work Type
+          </label>
+          <label
+            className="text-gray-700 text-lg font-bold mr-2"
+            htmlFor="worktype"
+          >
+            :
+          </label>
+          <div className="relative">
+            <select
+              className="bg-white focus:outline-none focus:shadow-outline border border-gray-400 rounded-lg py-2 px-4 block w-full appearance-none leading-normal"
+              id="workType"
+              onChange={handleOnChange}
+            >
+              <option value="">Select work type</option>
+              <option value="partTime">Part Time</option>
+              <option value="fullTime">Full Time</option>
+              <option value="freelancer">Freelancer</option>
+              <option value="internship">Internship</option>
+              <option value="contract">Contract</option>
+            </select>
+          </div>
+        </div>
+
       </Modal>
     </div>
   );

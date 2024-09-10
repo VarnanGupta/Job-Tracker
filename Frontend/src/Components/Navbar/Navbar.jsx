@@ -38,7 +38,7 @@ function Navbar() {
         <NavLink
           to={"/tracker"}
           className={({ isActive }) =>
-            `${isActive ? "text-yellow-400" : "text-white"}`
+            `${isActive ? "text-[#1B9AAA]" : "text-white"}`
           }
         >
           Tracker

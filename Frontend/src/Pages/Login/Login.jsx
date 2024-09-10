@@ -34,7 +34,8 @@ function Login() {
 
   return (
     <div className="w-full h-screen flex justify-center items-center font-mono bg-gray-300">
-      <div className="form-container w-[400px] border border-gray-200 shadow-2xl shadow-slate-800 rounded-2xl bg-white p-5">
+      <img src="/login.png" alt="" />
+      <div className="form-container mx-10 w-[400px] border border-gray-200 shadow-2xl shadow-slate-800 rounded-2xl bg-white p-5">
         <h1 className="text-center mb-4 font-bold text-2xl ">Login</h1>
         <form className="flex flex-col " onSubmit={handleSubmit}>
           <div className="form-group mb-3">
