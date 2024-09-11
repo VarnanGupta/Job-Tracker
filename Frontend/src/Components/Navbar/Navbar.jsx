@@ -1,29 +1,29 @@
 import { NavLink } from "react-router-dom";
-import { Button } from "antd";
-import { get } from "../../services/ApiEndPoint.js";
-import toast from "react-hot-toast";
-import { useNavigate } from "react-router-dom";
+// import { Button } from "antd";
+// import { get } from "../../services/ApiEndPoint.js";
+// import toast from "react-hot-toast";
+// import { useNavigate } from "react-router-dom";
 import { BiLinkExternal } from "react-icons/bi";
 // import { useDispatch } from 'react-redux';  // Import from react-redux
 // import {logout} from '../../features/AuthSlice.js'
 
 function Navbar() {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   // const dispatch = useDispatch() 
-  const handleLogout = async () => {
-    try {
-      const request = await get("/auth/logout");
-      const response = request.data;
-      console.log(response);
-      if (response.success) {
-        toast.success(response.message);
-        dispatch(logout()); // Dispatch the logout action
-        navigate("/login");
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  // const handleLogout = async () => {
+  //   try {
+  //     const request = await get("/auth/logout");
+  //     const response = request.data;
+  //     console.log(response);
+  //     if (response.success) {
+  //       toast.success(response.message);
+  //       dispatch(logout()); // Dispatch the logout action
+  //       navigate("/login");
+  //     }
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
 
   return (
     <div className="md:h-full md:w-[250px] z-10 overflow-y-auto text-white bg-[#141411] shadow-2xl shadow-black border-b-2 border-black flex md:flex-col justify-between">
