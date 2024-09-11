@@ -1,13 +1,15 @@
-import { useState } from "react";
+import { useState, useEffect} from "react";
 import { useNavigate } from "react-router-dom";
 import { post } from "../../services/ApiEndPoint";
 import toast from "react-hot-toast";
-import { useDispatch } from "react-redux";
-import { login } from "../../Store.js";
+import { useDispatch, useSelector } from "react-redux";
+import {login} from '../../features/AuthSlice.js'
 
 function Login() {
-  const dispatch = useDispatch();
+  
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
   const [value, setValue] = useState({ email: "", password: "" });
 
   const handleChange = (e) => {
@@ -17,15 +19,26 @@ function Login() {
     });
   };
 
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated); // Get auth state
+  useEffect(() => {
+    if (isAuthenticated) {
+      console.log("User is authenticated, navigating to /tracker...");
+      navigate('/tracker'); // Redirect to /tracker when authenticated
+    }
+  }, [isAuthenticated, navigate]); // Dependency array to watch for changes in isAuthenticated
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const request = await post("/auth/login", value);
+      console.log("Attempting to login...");
       const response = request.data;
       if (response.success) {
         toast.success(response.message);
-        dispatch(login());
+        dispatch(login({ username: 'user' })); // Example payload to authenticate user
+        console.log("Dispatching login action...");
         navigate("/tracker");
+        console.log("Redirecting to /tracker");
       }
       console.log(response);
     } catch (error) {
