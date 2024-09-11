@@ -9,9 +9,11 @@ import Layout from "./Layout.jsx";
 import Login from "./Pages/Login/Login.jsx";
 import Register from "./Pages/Register/Register.jsx";
 import { Toaster } from "react-hot-toast";
-import store from "./Store.js";
-import { Provider } from "react-redux";
-import ProtectedRoute from "./Components/ProtectedRoute.jsx";
+
+import store ,{persistor} from './Store.js'
+import { Provider } from 'react-redux';
+import { PersistGate } from 'redux-persist/integration/react';
+import ProtectedRoute from './components/ProtectedRoute.jsx'; // Import ProtectedRoute component
 
 const router = createBrowserRouter([
   {
@@ -24,7 +26,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/tracker",
-        element: (
+        element:  (
           <ProtectedRoute>
             <Tracker />
           </ProtectedRoute>
@@ -45,11 +47,13 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <Provider store={store}>
-      <RouterProvider router={router}>
-        <App />
-      </RouterProvider>
+     <Provider store={store}> {/* Redux Provider */}
+     <PersistGate loading={null} persistor={persistor}> {/* PersistGate for persisting state */}
+        <RouterProvider router={router}>
+          <App />
+        </RouterProvider>
         <Toaster />
+        </PersistGate>
     </Provider>
   </StrictMode>
 );

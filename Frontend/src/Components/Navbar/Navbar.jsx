@@ -4,12 +4,12 @@ import { get } from "../../services/ApiEndPoint.js";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { BiLinkExternal } from "react-icons/bi";
-import { useDispatch } from "react-redux";
-import { logout } from "../../Store.js";
+// import { useDispatch } from 'react-redux';  // Import from react-redux
+// import {logout} from '../../features/AuthSlice.js'
 
 function Navbar() {
   const navigate = useNavigate();
-  const dispatch = useDispatch()
+  // const dispatch = useDispatch() 
   const handleLogout = async () => {
     try {
       const request = await get("/auth/logout");
@@ -17,7 +17,7 @@ function Navbar() {
       console.log(response);
       if (response.success) {
         toast.success(response.message);
-        dispatch(logout())
+        dispatch(logout()); // Dispatch the logout action
         navigate("/login");
       }
     } catch (error) {
@@ -60,13 +60,13 @@ function Navbar() {
       <nav className="flex md:flex-col gap-3 text-2xl font-semibold font-mono ml-5 mb-10">
         {/* <NavLink to={"/login"}>Login</NavLink>
         <NavLink to={"/register"}>Register</NavLink> */}
-        <Button
+        {/* <Button
           type="primary"
           onClick={handleLogout}
           className=" bg-red-500 text-white font-mono flex justify-center rounded-3xl p-3 px-4 mt-2 mx-11 hover:bg-green-400 transition duration-300"
         >
           Logout
-        </Button>
+        </Button> */}
       </nav>
     </div>
   );

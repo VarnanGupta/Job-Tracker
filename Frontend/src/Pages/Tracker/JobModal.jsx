@@ -1,10 +1,14 @@
 import { useState } from "react";
 import { Button, Modal } from "antd";
-
-import { post } from "../../services/ApiEndPoint.js";
+import { useNavigate } from 'react-router-dom'
+import { post, get } from "../../services/ApiEndPoint.js";
 import toast from "react-hot-toast";
+import { useDispatch } from 'react-redux';  // Import from react-redux
+import {logout} from '../../features/AuthSlice.js'
 
 function JobModal({ getjobs }) {
+  const dispatch = useDispatch() 
+  const navigate=useNavigate()
   const initialFormData = {
     // Define initial form data separately
     companyName: "",
@@ -63,16 +67,39 @@ function JobModal({ getjobs }) {
     setFormData(initialFormData);
   };
 
+  const handleLogout = async () => {
+    try {
+      const request = await get("/auth/logout");
+      const response = request.data;
+      console.log(response);
+      if (response.success) {
+        toast.success(response.message);
+        dispatch(logout()); // Dispatch the logout action
+        navigate("/login");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
-    <div className="mt-[-31px]">
+    <div className="mt-[-31px] flex">
+      {/* Add job button */}
       <Button
         type="primary"
         className=" bg-green-500 text-white px-6 py-3 rounded-full text-lg shadow-lg shadow-slate-600 hover:bg-green-400 transition duration-300 p-3 font-mono"
         onClick={showModal}
-        footer
       >
         + Add Job
       </Button>
+      {/* Logout button */}
+      <Button
+          type="primary"
+          onClick={handleLogout}
+          className="mx-[1370px]  bg-red-500 text-white font-mono flex justify-center px-6 py-3 rounded-full text-lg shadow-lg shadow-slate-600 hover:bg-green-400 transition duration-300"
+        >
+          Logout
+        </Button>
 
       <Modal
         title={
